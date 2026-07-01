@@ -57,6 +57,7 @@ data:
             # to "*.mjs" files (ECMAScript modules)
             application/javascript js mjs;
         }
+        client_body_timeout 1200s;
         keepalive_timeout   180s;
         sendfile            on;
         server_tokens       off;
@@ -191,6 +192,9 @@ data:
           gzip off;
           uwsgi_pass web;
           include uwsgi_params;
+
+          uwsgi_read_timeout 1200s;
+          uwsgi_send_timeout 1200s;
 
           uwsgi_buffering off;
           uwsgi_request_buffering off;
