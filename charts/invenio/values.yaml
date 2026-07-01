@@ -259,7 +259,7 @@ nginx:
   ## @param nginx.files.client_max_body_size TODO:
   ##
   files:
-    client_max_body_size: 50G
+    client_max_body_size: 1000G
   ## @param nginx.resources `resources` for the nginx container
   ##
   ## We have decided to unset resources by default, leaving that as a conscious choice for the user.
@@ -268,12 +268,12 @@ nginx:
   ## Therefore, we think it's better that users get to set the resources explicitly for each container.
   ##
   resources: {}
-    # requests:
-    #   cpu: 250m
-    #   memory: 500Mi
-    # limits:
-    #   cpu: 250m
-    #   memory: 500Mi
+     requests:
+       cpu: 250m
+       memory: 500Mi
+     limits:
+       cpu: 250m
+       memory: 500Mi
   ## @param nginx.extra_server_config DEPRECATED: Use nginx.extraServerConfig instead.
   ##
   extra_server_config: ""
