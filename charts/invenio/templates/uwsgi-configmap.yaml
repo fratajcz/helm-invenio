@@ -43,11 +43,14 @@ data:
 
     # post-buffering = true
     buffer-size = 65535
-    socket-timeout = 120
-    socket-write-timeout = 120
-    so-write-timeout = 120
-    so-send-timeout = 120
-    socket-send-timeout = 120
+    socket-timeout = 1200
+    socket-write-timeout = 1200
+    so-write-timeout = 1200
+    so-send-timeout = 1200
+    socket-send-timeout = 1200
+    http-timeout = 1200
+    post-buffering =  2097152
+    post-buffering-bufsize =  2097152
 
     # Automatically respawn processes after serving
     max-requests = 1000
