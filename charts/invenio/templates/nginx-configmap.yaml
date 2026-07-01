@@ -193,8 +193,17 @@ data:
           uwsgi_pass web;
           include uwsgi_params;
 
-          uwsgi_read_timeout 1200s;
-          uwsgi_send_timeout 1200s;
+          # <new stuff>
+          # Allow file uploads to take 24h - this should only be available to trusted users
+          # After this timeout, parallel file uploads start failing
+          uwsgi_read_timeout 24h;
+          uwsgi_send_timeout 24h;
+          client_body_timeout 24h;
+      
+          # The docs for the `uwsgi_request_buffering` directive say that if HTTP/1.1 chunked transfer encoding
+          # is enabled, the request will always be buffered - we really don't want that!
+          proxy_http_version 1.0;
+          chunked_transfer_encoding off;
 
           uwsgi_buffering off;
           uwsgi_request_buffering off;
